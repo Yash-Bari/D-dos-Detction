@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDoS Detection</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        .prediction {
+            color: #00cc00;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DDoS Detection</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file">
+            <button type="submit">Predict</button>
+        </form>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if prediction %}
+        <p class="prediction">Prediction: {{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
